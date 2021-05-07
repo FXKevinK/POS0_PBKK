@@ -11,9 +11,9 @@ using System.Data.SqlClient;
 
 namespace POS0
 {
-    public partial class Form1 : Form
+    public partial class Login : Form
     {
-        public Form1()
+        public Login()
         {
             InitializeComponent();
         }
@@ -27,22 +27,44 @@ namespace POS0
            
         }
 
+        private void userType(DataTable data)
+        {
+            if(data.Rows[0][1].ToString() == "1")
+            {
+                Transactions transaction = new Transactions();
+                transaction.Show();
+                this.Hide();
+            }
+            else if(data.Rows[0][1].ToString() == "2")
+            {
+                //admin
+                admin admins = new admin();
+                admins.Show();
+                this.Hide();
+            }
+
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            Con.Open();
-            SqlDataAdapter sda = new SqlDataAdapter("select count(8) from [dbo].[user] where username='" + textBox1.Text + "' and password='" + textBox2.Text + "'", Con);
+            try
+            {
+                Con.Open();
+            }
+            catch (Exception c)
+            {
+                Console.WriteLine(c.Message);
+                Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ASUS\Documents\TESTDb.mdf;Integrated Security=True;Connect Timeout=30");
+                Con.Open();
+            }
+
+            SqlDataAdapter sda = new SqlDataAdapter("select count(8),userType from [dbo].[user] where username='" + textBox1.Text + "' and password='" + textBox2.Text + "'", Con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             if (dt.Rows[0][0].ToString() == "1")
             {
                 MessageBox.Show("Correct");
-                Form2 productlist = new Form2();
-                productlist.Show();
-                this.Hide();
-                //Sellername = UnameTb.Text;
-                //SellingForm sell = new SellingForm();
-                //sell.Show();
-                //this.Hide();
+                userType(dt);
                 Con.Close();
             }
             else
@@ -58,6 +80,11 @@ namespace POS0
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }
