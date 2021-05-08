@@ -44,8 +44,14 @@ namespace POS0
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.productsBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.idTransactionsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tESTDbDataSet = new POS0.TESTDbDataSet();
+            this.productsBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.productsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -53,23 +59,19 @@ namespace POS0
             this.userTableAdapter = new POS0.TESTDbDataSetTableAdapters.userTableAdapter();
             this.productsTableAdapter1 = new POS0.TESTDbDataSetTableAdapters.productsTableAdapter();
             this.productsBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.transactionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.transactionsTableAdapter = new POS0.TESTDbDataSetTableAdapters.transactionsTableAdapter();
-            this.idTransactionsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productsBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tESTDbDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource4)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox2
@@ -215,63 +217,6 @@ namespace POS0
             this.dataGridView1.TabIndex = 15;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // productsBindingSource2
-            // 
-            this.productsBindingSource2.DataMember = "products";
-            this.productsBindingSource2.DataSource = this.tESTDbDataSet;
-            // 
-            // tESTDbDataSet
-            // 
-            this.tESTDbDataSet.DataSetName = "TESTDbDataSet";
-            this.tESTDbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // productsBindingSource
-            // 
-            this.productsBindingSource.DataMember = "products";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DataSource = this.productsBindingSource1;
-            this.comboBox1.DisplayMember = "productName";
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(65, 90);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(269, 24);
-            this.comboBox1.TabIndex = 18;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // productsBindingSource1
-            // 
-            this.productsBindingSource1.DataMember = "products";
-            // 
-            // userBindingSource
-            // 
-            this.userBindingSource.DataMember = "user";
-            this.userBindingSource.DataSource = this.tESTDbDataSet;
-            // 
-            // userTableAdapter
-            // 
-            this.userTableAdapter.ClearBeforeFill = true;
-            // 
-            // productsTableAdapter1
-            // 
-            this.productsTableAdapter1.ClearBeforeFill = true;
-            // 
-            // productsBindingSource3
-            // 
-            this.productsBindingSource3.DataMember = "products";
-            this.productsBindingSource3.DataSource = this.tESTDbDataSet;
-            // 
-            // transactionsBindingSource
-            // 
-            this.transactionsBindingSource.DataMember = "transactions";
-            this.transactionsBindingSource.DataSource = this.tESTDbDataSet;
-            // 
-            // transactionsTableAdapter
-            // 
-            this.transactionsTableAdapter.ClearBeforeFill = true;
-            // 
             // idTransactionsDataGridViewTextBoxColumn
             // 
             this.idTransactionsDataGridViewTextBoxColumn.DataPropertyName = "IdTransactions";
@@ -312,6 +257,69 @@ namespace POS0
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
             this.descriptionDataGridViewTextBoxColumn.Width = 125;
             // 
+            // transactionsBindingSource
+            // 
+            this.transactionsBindingSource.DataMember = "transactions";
+            this.transactionsBindingSource.DataSource = this.tESTDbDataSet;
+            // 
+            // tESTDbDataSet
+            // 
+            this.tESTDbDataSet.DataSetName = "TESTDbDataSet";
+            this.tESTDbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // productsBindingSource2
+            // 
+            this.productsBindingSource2.DataMember = "products";
+            this.productsBindingSource2.DataSource = this.tESTDbDataSet;
+            // 
+            // productsBindingSource
+            // 
+            this.productsBindingSource.DataMember = "products";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DataSource = this.productsBindingSource4;
+            this.comboBox1.DisplayMember = "productName";
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(65, 90);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(269, 24);
+            this.comboBox1.TabIndex = 18;
+            this.comboBox1.ValueMember = "productName";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // productsBindingSource1
+            // 
+            this.productsBindingSource1.DataMember = "products";
+            // 
+            // userBindingSource
+            // 
+            this.userBindingSource.DataMember = "user";
+            this.userBindingSource.DataSource = this.tESTDbDataSet;
+            // 
+            // userTableAdapter
+            // 
+            this.userTableAdapter.ClearBeforeFill = true;
+            // 
+            // productsTableAdapter1
+            // 
+            this.productsTableAdapter1.ClearBeforeFill = true;
+            // 
+            // productsBindingSource3
+            // 
+            this.productsBindingSource3.DataMember = "products";
+            this.productsBindingSource3.DataSource = this.tESTDbDataSet;
+            // 
+            // transactionsTableAdapter
+            // 
+            this.transactionsTableAdapter.ClearBeforeFill = true;
+            // 
+            // productsBindingSource4
+            // 
+            this.productsBindingSource4.DataMember = "products";
+            this.productsBindingSource4.DataSource = this.tESTDbDataSet;
+            // 
             // Transactions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -339,13 +347,14 @@ namespace POS0
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tESTDbDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -382,5 +391,6 @@ namespace POS0
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource productsBindingSource4;
     }
 }

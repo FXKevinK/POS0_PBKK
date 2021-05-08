@@ -196,6 +196,7 @@ namespace POS0
             this.productName.Name = "productName";
             this.productName.Size = new System.Drawing.Size(232, 24);
             this.productName.TabIndex = 7;
+            this.productName.ValueMember = "productName";
             this.productName.SelectedIndexChanged += new System.EventHandler(this.productName_SelectedIndexChanged);
             // 
             // productsBindingSource1
