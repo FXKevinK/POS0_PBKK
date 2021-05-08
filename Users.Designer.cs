@@ -44,24 +44,16 @@ namespace POS0
             this.Add = new System.Windows.Forms.Button();
             this.Update = new System.Windows.Forms.Button();
             this.Delete = new System.Windows.Forms.Button();
-            this.tESTDbDataSet = new POS0.TESTDbDataSet();
-            this.tESTDbDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.userTableAdapter = new POS0.TESTDbDataSetTableAdapters.userTableAdapter();
-            this.idUserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userEmail = new System.Windows.Forms.TextBox();
             this.userTelp = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.userBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.posDataSetDataSet = new POS0.posDataSetDataSet();
+            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.userTableAdapter = new POS0.posDataSetDataSetTableAdapters.userTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tESTDbDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tESTDbDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSetDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // moveToUser
@@ -137,7 +129,7 @@ namespace POS0
             // 
             // userName
             // 
-            this.userName.DataSource = this.userBindingSource1;
+            this.userName.DataSource = this.userBindingSource;
             this.userName.DisplayMember = "username";
             this.userName.FormattingEnabled = true;
             this.userName.Location = new System.Drawing.Point(223, 125);
@@ -162,14 +154,7 @@ namespace POS0
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idUserDataGridViewTextBoxColumn,
-            this.userTypeDataGridViewTextBoxColumn,
-            this.usernameDataGridViewTextBoxColumn,
-            this.passwordDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.userBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(625, 40);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -209,61 +194,6 @@ namespace POS0
             this.Delete.UseVisualStyleBackColor = true;
             this.Delete.Click += new System.EventHandler(this.Delete_Click);
             // 
-            // tESTDbDataSet
-            // 
-            this.tESTDbDataSet.DataSetName = "TESTDbDataSet";
-            this.tESTDbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tESTDbDataSetBindingSource
-            // 
-            this.tESTDbDataSetBindingSource.DataSource = this.tESTDbDataSet;
-            this.tESTDbDataSetBindingSource.Position = 0;
-            // 
-            // userBindingSource
-            // 
-            this.userBindingSource.DataMember = "user";
-            this.userBindingSource.DataSource = this.tESTDbDataSetBindingSource;
-            // 
-            // userTableAdapter
-            // 
-            this.userTableAdapter.ClearBeforeFill = true;
-            // 
-            // idUserDataGridViewTextBoxColumn
-            // 
-            this.idUserDataGridViewTextBoxColumn.DataPropertyName = "idUser";
-            this.idUserDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.idUserDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idUserDataGridViewTextBoxColumn.Name = "idUserDataGridViewTextBoxColumn";
-            this.idUserDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idUserDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // userTypeDataGridViewTextBoxColumn
-            // 
-            this.userTypeDataGridViewTextBoxColumn.DataPropertyName = "userType";
-            this.userTypeDataGridViewTextBoxColumn.HeaderText = "Tipe User";
-            this.userTypeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.userTypeDataGridViewTextBoxColumn.Name = "userTypeDataGridViewTextBoxColumn";
-            this.userTypeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.userTypeDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // usernameDataGridViewTextBoxColumn
-            // 
-            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "username";
-            this.usernameDataGridViewTextBoxColumn.HeaderText = "username";
-            this.usernameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
-            this.usernameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.usernameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // passwordDataGridViewTextBoxColumn
-            // 
-            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "password";
-            this.passwordDataGridViewTextBoxColumn.HeaderText = "password";
-            this.passwordDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
-            this.passwordDataGridViewTextBoxColumn.ReadOnly = true;
-            this.passwordDataGridViewTextBoxColumn.Width = 125;
-            // 
             // userEmail
             // 
             this.userEmail.Location = new System.Drawing.Point(226, 274);
@@ -296,10 +226,19 @@ namespace POS0
             this.label5.TabIndex = 19;
             this.label5.Text = "No Telepon";
             // 
-            // userBindingSource1
+            // posDataSetDataSet
             // 
-            this.userBindingSource1.DataMember = "user";
-            this.userBindingSource1.DataSource = this.tESTDbDataSetBindingSource;
+            this.posDataSetDataSet.DataSetName = "posDataSetDataSet";
+            this.posDataSetDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // userBindingSource
+            // 
+            this.userBindingSource.DataMember = "user";
+            this.userBindingSource.DataSource = this.posDataSetDataSet;
+            // 
+            // userTableAdapter
+            // 
+            this.userTableAdapter.ClearBeforeFill = true;
             // 
             // Users
             // 
@@ -328,10 +267,8 @@ namespace POS0
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Users_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tESTDbDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tESTDbDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSetDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -350,21 +287,15 @@ namespace POS0
         private System.Windows.Forms.ComboBox userName;
         private System.Windows.Forms.ComboBox userType;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.BindingSource tESTDbDataSetBindingSource;
-        private TESTDbDataSet tESTDbDataSet;
         private System.Windows.Forms.Button Add;
         private System.Windows.Forms.Button Update;
         private System.Windows.Forms.Button Delete;
-        private System.Windows.Forms.BindingSource userBindingSource;
-        private TESTDbDataSetTableAdapters.userTableAdapter userTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idUserDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn userTypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
         private System.Windows.Forms.TextBox userEmail;
         private System.Windows.Forms.TextBox userTelp;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.BindingSource userBindingSource1;
+        private posDataSetDataSet posDataSetDataSet;
+        private System.Windows.Forms.BindingSource userBindingSource;
+        private posDataSetDataSetTableAdapters.userTableAdapter userTableAdapter;
     }
 }

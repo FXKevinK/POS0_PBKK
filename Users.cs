@@ -11,6 +11,7 @@ namespace POS0
         public Users()
         {
             InitializeComponent();
+            load();
             try
             {
                 Con.Open();
@@ -24,23 +25,23 @@ namespace POS0
             }
         }
 
-        private int getUserType(string data)
+        private void load()
         {
-            if (data != "admin")
-            {
-                return 2;
-            }
-            else if (data == "admin")
-            {
-                return 1;
-            }
-            return 2;
+            Con.Open();
+            string query = "select * from [dbo].[user]";
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(query, Con);
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
+            Con.Close();
+
         }
+
 
         private void Users_Load(object sender, System.EventArgs e)
         {
-            // TODO: This line of code loads data into the 'tESTDbDataSet.user' table. You can move, or remove it, as needed.
-            this.userTableAdapter.Fill(this.tESTDbDataSet.user);
+            // TODO: This line of code loads data into the 'posDataSetDataSet.user' table. You can move, or remove it, as needed.
+            this.userTableAdapter.Fill(this.posDataSetDataSet.user);
 
         }
 
@@ -79,7 +80,7 @@ namespace POS0
             try
             {
                 Con.Open();
-                string query1 = "select idUser from [dbo].[user] where username = '" + userName.Text + "'";
+                string query1 = "select Id from [dbo].[user] where username = '" + userName.Text + "'";
                 SqlDataAdapter da = new SqlDataAdapter(query1, Con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -87,8 +88,7 @@ namespace POS0
                 if (dt.Rows.Count == 0)
                 {
                     Con.Open();
-                    int type = getUserType(userType.Text);
-                    string query = "insert into [dbo].[user] ('username','password','email','notelp','userType') value('" + userName.Text + "','" + userPassword.Text + "','" + userEmail.Text + "'" + userTelp.Text + "','" + type + "') ";
+                    string query = "insert into [dbo].[user] ('username','password','email','notelp','usertype') value('" + userName.Text + "','" + userPassword.Text + "','" + userEmail.Text + "'" + userTelp.Text + "','" + userType.Text + "') ";
                     SqlCommand cmd = new SqlCommand(query, Con);
 
                     Con.Close();
@@ -103,6 +103,7 @@ namespace POS0
             {
                 MessageBox.Show(f.Message);
             }
+            load();
 
         }
 
@@ -115,8 +116,8 @@ namespace POS0
                     "', password='" + userPassword.Text +
                     "', email='" + userEmail.Text +
                     "', notelp='" + userTelp.Text +
-                    "', userType='" + getUserType(userType.Text) +
-                    " where idUser='" + userID.Text +
+                    "', usertype='" + userType.Text +
+                    " where Id='" + userID.Text +
                     "'";
                 SqlCommand cmd = new SqlCommand(query, Con);
                 Con.Close();
@@ -126,7 +127,7 @@ namespace POS0
             {
                 MessageBox.Show(f.Message);
             }
-
+            load();
         }
 
         private void Delete_Click(object sender, System.EventArgs e)
@@ -134,7 +135,7 @@ namespace POS0
             try
             {
                 Con.Open();
-                string query = "delete from [dbo].[user] where idUser = '" + userID.Text +
+                string query = "delete from [dbo].[user] where Id = '" + userID.Text +
                     "'";
                 SqlCommand cmd = new SqlCommand(query, Con);
                 Con.Close();
@@ -145,7 +146,7 @@ namespace POS0
             {
                 MessageBox.Show(f.Message);
             }
-
+            load();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, System.EventArgs e)

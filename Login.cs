@@ -1,82 +1,90 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace POS0
 {
-    public partial class Login : Form
+    public partial class login : Form
     {
-        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\eric\Documents\pos.mdf;Integrated Security=True;Connect Timeout=30");
-        public Login()
+        public login()
         {
             InitializeComponent();
+        }
+        
+         SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\eric\Documents\pos.mdf;Integrated Security=True;Connect Timeout=30");
+
+        private void login_Load(object sender, EventArgs e)
+        {
             try
             {
                 Con.Open();
+                Con.Close();
             }
-            catch (Exception c)
+            catch
             {
-                Console.WriteLine(c.Message);
-                Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ASUS\source\repos\POS0_PBKK\TESTDb.mdf;Integrated Security=True;Connect Timeout=30");
+                Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ASUS\source\repos\POS0_PBKK\posDataSet.mdf;Integrated Security=True;Connect Timeout=30");
                 Con.Open();
+                Con.Close();
             }
-            Con.Close();
+
         }
 
-
-
+        private void checkUserType(DataTable dt)
+        {
+            if(dt.Rows[0][5].ToString() == "admin")
+            {
+                Users userlist = new Users();
+                userlist.Show();
+                this.Hide();
+            }
+            else
+            {
+                bill billlist = new bill();
+                billlist.Show();
+                this.Hide();
+            }
+        }
 
         private void label1_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void userType(DataTable data)
-        {
-            if (data.Rows[0][1].ToString() == "1")
-            {
-                Transactions transaction = new Transactions();
-                transaction.Show();
-                this.Hide();
-            }
-            else if (data.Rows[0][1].ToString() == "2")
-            {
-                //admin
-                products product = new products();
-                product.Show();
-                this.Hide();
-            }
-
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter("select * from [dbo].[user] where username='" + textBox1.Text + "' and password='" + textBox2.Text + "'", Con);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
             try
             {
-                Con.Open();
-
-                SqlDataAdapter sda = new SqlDataAdapter("select idUser , userType from [dbo].[user] where username='" + textBox1.Text + "' and password='" + textBox2.Text + "'", Con);
-                DataTable dt = new DataTable();
-                sda.Fill(dt);
-                if (Convert.ToInt32(dt.Rows[0][0].ToString()) >= 1)
+                if (dt.Rows.Count > 0)
                 {
                     MessageBox.Show("Correct");
-                    userType(dt);
+                    checkUserType(dt);
+  
                     Con.Close();
                 }
                 else
                 {
                     MessageBox.Show("Wrong Username or Password");
                 }
-                Con.Close();
 
             }
-            catch (Exception f)
+            catch
             {
-                Console.WriteLine(f.Message);
-                MessageBox.Show(f.Message);
+                    MessageBox.Show("Wrong Username or Password");
+               
             }
+          
+            Con.Close();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -89,9 +97,5 @@ namespace POS0
 
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

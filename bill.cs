@@ -17,13 +17,41 @@ namespace POS0
         public bill()
         {
             InitializeComponent();
+            TestConnection();
             populate();
+            automateID();
             dateLabel.Text = DateTime.Today.Day.ToString() + "/" + DateTime.Today.Month.ToString() + "/" + DateTime.Today.Year.ToString();
         }
 
         SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\eric\Documents\pos.mdf;Integrated Security=True;Connect Timeout=30");
 
+        private void automateID()
+        {
+            Con.Open();
+            string query = "select max(BillID) from [dbo].[transactionList]";
+            SqlCommand cmd = new SqlCommand(query, Con);
+            int result = (int)(cmd.ExecuteScalar());
+            result += 1;
 
+            billID.Text = Convert.ToString(result);
+            
+            Con.Close();
+        }
+
+        private void TestConnection()
+        {
+            try
+            {
+                Con.Open();
+                Con.Close();
+            }
+            catch
+            {
+                Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ASUS\source\repos\POS0_PBKK\posDataSet.mdf;Integrated Security=True;Connect Timeout=30");
+                Con.Open();
+                Con.Close();
+            }
+        }
 
         // Variable
         int GrdTotal = 0, n = 0;
@@ -61,7 +89,7 @@ namespace POS0
         private void populatebills()
         {
             Con.Open();
-            string query = "select * from transactionList";
+            string query = "select * from [dbo].[transactionList]";
             SqlDataAdapter sda = new SqlDataAdapter(query, Con);
             SqlCommandBuilder builder = new SqlCommandBuilder(sda);
             var ds = new DataSet();
@@ -81,7 +109,7 @@ namespace POS0
                 try
                 {
                     Con.Open();
-                    string query = "insert into transactionList values (" + billID.Text + ",'" + dateLabel.Text + "'," + totalHarga.Text + ")";
+                    string query = "insert into transactionList(Date,TotalAmmount) values ('" + dateLabel.Text + "'," + totalHarga.Text + ")";
                     SqlCommand cmd = new SqlCommand(query, Con);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Order Added Successful");
@@ -90,6 +118,7 @@ namespace POS0
                     productName.Text = ""; 
                     productPrice.Text = ""; 
                     productQuantity.Text = "";
+                    automateID();
                 }
                 catch (Exception ex)
                 {
@@ -105,7 +134,8 @@ namespace POS0
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            e.Graphics.DrawString("AMEL&EVESUPERMARKET", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Red, new Point(230));
+            float height = 0;
+            e.Graphics.DrawString("PBKK POS", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black ,e.PageBounds.Width/2, height);
            
         }
         private void printPreviewDialog1_Load(object sender, EventArgs e)
@@ -120,7 +150,7 @@ namespace POS0
         private void populate()
         {
             Con.Open();
-            string query = "select productName, price from products";
+            string query = "select productName, price from [dbo].[products]";
             SqlDataAdapter sda = new SqlDataAdapter(query, Con);
             SqlCommandBuilder builder = new SqlCommandBuilder(sda);
             var ds = new DataSet();
@@ -156,9 +186,55 @@ namespace POS0
 
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void printDocument1_PrintPage_1(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            //draw here
+            float height = 0;
+            e.Graphics.DrawString("PBKK POS", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 2, e.PageBounds.Height / 10);
+            e.Graphics.DrawString("PBKK POS", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 2, e.PageBounds.Height / 10 * 2);
+            e.Graphics.DrawString("PBKK POS", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 2, e.PageBounds.Height / 10 * 3);
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+            login Login = new login();
+            Login.Show();
+            this.Close();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BillsDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void bill_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'posDataSetDataSet.transactionList' table. You can move, or remove it, as needed.
+            this.transactionListTableAdapter.Fill(this.posDataSetDataSet.transactionList);
+
+        }
+
+        private void printPreviewDialog1_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            productName.Text = dataGridView2.SelectedRows[0].Cells[1].Value.ToString();
+            productPrice.Text = dataGridView2.SelectedRows[0].Cells[2].Value.ToString();
+            productQuantity.Text = dataGridView2.SelectedRows[0].Cells[3].Value.ToString();
         }
     }
 }
