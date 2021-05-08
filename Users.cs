@@ -2,9 +2,9 @@
 
 namespace POS0
 {
-    public partial class admin : Form
+    public partial class Users : Form
     {
-        public admin()
+        public Users()
         {
             InitializeComponent();
         }
