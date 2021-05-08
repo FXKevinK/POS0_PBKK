@@ -1,41 +1,46 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace POS0
 {
     public partial class Login : Form
     {
+        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\eric\Documents\pos.mdf;Integrated Security=True;Connect Timeout=30");
         public Login()
         {
             InitializeComponent();
+            try
+            {
+                Con.Open();
+            }
+            catch (Exception c)
+            {
+                Console.WriteLine(c.Message);
+                Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ASUS\source\repos\POS0_PBKK\TESTDb.mdf;Integrated Security=True;Connect Timeout=30");
+                Con.Open();
+            }
+            Con.Close();
         }
 
 
-        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\eric\Documents\pos.mdf;Integrated Security=True;Connect Timeout=30");
 
 
         private void label1_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void userType(DataTable data)
         {
-            if(data.Rows[0][1].ToString() == "1")
+            if (data.Rows[0][1].ToString() == "1")
             {
                 Transactions transaction = new Transactions();
                 transaction.Show();
                 this.Hide();
             }
-            else if(data.Rows[0][1].ToString() == "2")
+            else if (data.Rows[0][1].ToString() == "2")
             {
                 //admin
                 admin admins = new admin();
@@ -50,28 +55,28 @@ namespace POS0
             try
             {
                 Con.Open();
-            }
-            catch (Exception c)
-            {
-                Console.WriteLine(c.Message);
-                Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ASUS\Documents\TESTDb.mdf;Integrated Security=True;Connect Timeout=30");
-                Con.Open();
-            }
 
-            SqlDataAdapter sda = new SqlDataAdapter("select count(8),userType from [dbo].[user] where username='" + textBox1.Text + "' and password='" + textBox2.Text + "'", Con);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            if (dt.Rows[0][0].ToString() == "1")
-            {
-                MessageBox.Show("Correct");
-                userType(dt);
+                SqlDataAdapter sda = new SqlDataAdapter("select idUser , userType from [dbo].[user] where username='" + textBox1.Text + "' and password='" + textBox2.Text + "'", Con);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (Convert.ToInt32(dt.Rows[0][0].ToString()) >= 1)
+                {
+                    MessageBox.Show("Correct");
+                    userType(dt);
+                    Con.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Wrong Username or Password");
+                }
                 Con.Close();
+
             }
-            else
+            catch (Exception f)
             {
-                MessageBox.Show("Wrong Username or Password");
+                Console.WriteLine(f.Message);
+                MessageBox.Show(f.Message);
             }
-            Con.Close();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
