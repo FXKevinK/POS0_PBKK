@@ -40,12 +40,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.DataGRID2 = new System.Windows.Forms.Panel();
             this.BillsDGV = new System.Windows.Forms.DataGridView();
+            this.billIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalAmmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionListBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.posDataSetDataSet = new POS0.posDataSetDataSet();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.order_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prodName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prodPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prodQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.billID = new System.Windows.Forms.TextBox();
             this.productPrice = new System.Windows.Forms.TextBox();
             this.productQuantity = new System.Windows.Forms.TextBox();
@@ -66,18 +66,21 @@
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.button5 = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.posDataSetDataSet = new POS0.posDataSetDataSet();
-            this.transactionListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.transactionListTableAdapter = new POS0.posDataSetDataSetTableAdapters.transactionListTableAdapter();
-            this.billIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalAmmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productID = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.urutan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idproduk = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Product = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PriceProduk = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityproduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataGRID2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BillsDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionListBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSetDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.posDataSetDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionListBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // totalHarga
@@ -190,6 +193,8 @@
             // DataGRID2
             // 
             this.DataGRID2.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.DataGRID2.Controls.Add(this.label9);
+            this.DataGRID2.Controls.Add(this.productID);
             this.DataGRID2.Controls.Add(this.label8);
             this.DataGRID2.Controls.Add(this.BillsDGV);
             this.DataGRID2.Controls.Add(this.dataGridView2);
@@ -238,66 +243,64 @@
             this.BillsDGV.TabIndex = 35;
             this.BillsDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BillsDGV_CellContentClick);
             // 
+            // billIDDataGridViewTextBoxColumn
+            // 
+            this.billIDDataGridViewTextBoxColumn.DataPropertyName = "BillID";
+            this.billIDDataGridViewTextBoxColumn.HeaderText = "BillID";
+            this.billIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.billIDDataGridViewTextBoxColumn.Name = "billIDDataGridViewTextBoxColumn";
+            this.billIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.billIDDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dateDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // totalAmmountDataGridViewTextBoxColumn
+            // 
+            this.totalAmmountDataGridViewTextBoxColumn.DataPropertyName = "TotalAmmount";
+            this.totalAmmountDataGridViewTextBoxColumn.HeaderText = "TotalAmmount";
+            this.totalAmmountDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.totalAmmountDataGridViewTextBoxColumn.Name = "totalAmmountDataGridViewTextBoxColumn";
+            this.totalAmmountDataGridViewTextBoxColumn.ReadOnly = true;
+            this.totalAmmountDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // transactionListBindingSource
+            // 
+            this.transactionListBindingSource.DataMember = "transactionList";
+            this.transactionListBindingSource.DataSource = this.posDataSetDataSet;
+            // 
+            // posDataSetDataSet
+            // 
+            this.posDataSetDataSet.DataSetName = "posDataSetDataSet";
+            this.posDataSetDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.order_item,
-            this.prodName,
-            this.prodPrice,
-            this.prodQuantity,
-            this.TotalPrice});
+            this.urutan,
+            this.idproduk,
+            this.Product,
+            this.PriceProduk,
+            this.quantityproduct,
+            this.totalprice});
             this.dataGridView2.Location = new System.Drawing.Point(574, 55);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(540, 303);
+            this.dataGridView2.Size = new System.Drawing.Size(633, 303);
             this.dataGridView2.TabIndex = 34;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
-            // 
-            // order_item
-            // 
-            this.order_item.HeaderText = "ItemID";
-            this.order_item.MinimumWidth = 6;
-            this.order_item.Name = "order_item";
-            this.order_item.ReadOnly = true;
-            this.order_item.Width = 125;
-            // 
-            // prodName
-            // 
-            this.prodName.HeaderText = "Product";
-            this.prodName.MinimumWidth = 6;
-            this.prodName.Name = "prodName";
-            this.prodName.ReadOnly = true;
-            this.prodName.Width = 125;
-            // 
-            // prodPrice
-            // 
-            this.prodPrice.HeaderText = "Price";
-            this.prodPrice.MinimumWidth = 6;
-            this.prodPrice.Name = "prodPrice";
-            this.prodPrice.ReadOnly = true;
-            this.prodPrice.Width = 125;
-            // 
-            // prodQuantity
-            // 
-            this.prodQuantity.HeaderText = "Quantity";
-            this.prodQuantity.MinimumWidth = 6;
-            this.prodQuantity.Name = "prodQuantity";
-            this.prodQuantity.ReadOnly = true;
-            this.prodQuantity.Width = 125;
-            // 
-            // TotalPrice
-            // 
-            this.TotalPrice.HeaderText = "Total";
-            this.TotalPrice.MinimumWidth = 6;
-            this.TotalPrice.Name = "TotalPrice";
-            this.TotalPrice.ReadOnly = true;
-            this.TotalPrice.Width = 125;
             // 
             // billID
             // 
@@ -314,6 +317,7 @@
             this.productPrice.Location = new System.Drawing.Point(152, 155);
             this.productPrice.Margin = new System.Windows.Forms.Padding(4);
             this.productPrice.Name = "productPrice";
+            this.productPrice.ReadOnly = true;
             this.productPrice.Size = new System.Drawing.Size(132, 22);
             this.productPrice.TabIndex = 32;
             // 
@@ -331,6 +335,7 @@
             this.productName.Location = new System.Drawing.Point(152, 114);
             this.productName.Margin = new System.Windows.Forms.Padding(4);
             this.productName.Name = "productName";
+            this.productName.ReadOnly = true;
             this.productName.Size = new System.Drawing.Size(132, 22);
             this.productName.TabIndex = 30;
             this.productName.TextChanged += new System.EventHandler(this.productName_TextChanged);
@@ -506,46 +511,78 @@
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage_1);
             // 
-            // posDataSetDataSet
-            // 
-            this.posDataSetDataSet.DataSetName = "posDataSetDataSet";
-            this.posDataSetDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // transactionListBindingSource
-            // 
-            this.transactionListBindingSource.DataMember = "transactionList";
-            this.transactionListBindingSource.DataSource = this.posDataSetDataSet;
-            // 
             // transactionListTableAdapter
             // 
             this.transactionListTableAdapter.ClearBeforeFill = true;
             // 
-            // billIDDataGridViewTextBoxColumn
+            // productID
             // 
-            this.billIDDataGridViewTextBoxColumn.DataPropertyName = "BillID";
-            this.billIDDataGridViewTextBoxColumn.HeaderText = "BillID";
-            this.billIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.billIDDataGridViewTextBoxColumn.Name = "billIDDataGridViewTextBoxColumn";
-            this.billIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.billIDDataGridViewTextBoxColumn.Width = 125;
+            this.productID.Location = new System.Drawing.Point(152, 240);
+            this.productID.Name = "productID";
+            this.productID.ReadOnly = true;
+            this.productID.Size = new System.Drawing.Size(132, 22);
+            this.productID.TabIndex = 36;
             // 
-            // dateDataGridViewTextBoxColumn
+            // label9
             // 
-            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.dateDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dateDataGridViewTextBoxColumn.Width = 125;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(5, 240);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(93, 25);
+            this.label9.TabIndex = 37;
+            this.label9.Text = "Quantity";
             // 
-            // totalAmmountDataGridViewTextBoxColumn
+            // urutan
             // 
-            this.totalAmmountDataGridViewTextBoxColumn.DataPropertyName = "TotalAmmount";
-            this.totalAmmountDataGridViewTextBoxColumn.HeaderText = "TotalAmmount";
-            this.totalAmmountDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.totalAmmountDataGridViewTextBoxColumn.Name = "totalAmmountDataGridViewTextBoxColumn";
-            this.totalAmmountDataGridViewTextBoxColumn.ReadOnly = true;
-            this.totalAmmountDataGridViewTextBoxColumn.Width = 125;
+            this.urutan.HeaderText = "No";
+            this.urutan.MinimumWidth = 6;
+            this.urutan.Name = "urutan";
+            this.urutan.ReadOnly = true;
+            this.urutan.Width = 125;
+            // 
+            // idproduk
+            // 
+            this.idproduk.HeaderText = "ID Produk";
+            this.idproduk.MinimumWidth = 6;
+            this.idproduk.Name = "idproduk";
+            this.idproduk.ReadOnly = true;
+            this.idproduk.Visible = false;
+            this.idproduk.Width = 125;
+            // 
+            // Product
+            // 
+            this.Product.HeaderText = "Product";
+            this.Product.MinimumWidth = 6;
+            this.Product.Name = "Product";
+            this.Product.ReadOnly = true;
+            this.Product.Width = 125;
+            // 
+            // PriceProduk
+            // 
+            this.PriceProduk.HeaderText = "Price";
+            this.PriceProduk.MinimumWidth = 6;
+            this.PriceProduk.Name = "PriceProduk";
+            this.PriceProduk.ReadOnly = true;
+            this.PriceProduk.Width = 125;
+            // 
+            // quantityproduct
+            // 
+            this.quantityproduct.HeaderText = "Quantity";
+            this.quantityproduct.MinimumWidth = 6;
+            this.quantityproduct.Name = "quantityproduct";
+            this.quantityproduct.ReadOnly = true;
+            this.quantityproduct.Width = 125;
+            // 
+            // totalprice
+            // 
+            this.totalprice.HeaderText = "Total Price";
+            this.totalprice.MinimumWidth = 6;
+            this.totalprice.Name = "totalprice";
+            this.totalprice.ReadOnly = true;
+            this.totalprice.Width = 125;
             // 
             // bill
             // 
@@ -561,10 +598,10 @@
             this.DataGRID2.ResumeLayout(false);
             this.DataGRID2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BillsDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionListBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSetDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.posDataSetDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionListBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -601,11 +638,6 @@
         private System.Windows.Forms.TextBox billID;
         private System.Windows.Forms.TextBox productPrice;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn order_item;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prodName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prodPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prodQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
         private System.Windows.Forms.DataGridView BillsDGV;
         private posDataSetDataSet posDataSetDataSet;
         private System.Windows.Forms.BindingSource transactionListBindingSource;
@@ -613,5 +645,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn billIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalAmmountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox productID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn urutan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idproduk;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Product;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PriceProduk;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityproduct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalprice;
     }
 }

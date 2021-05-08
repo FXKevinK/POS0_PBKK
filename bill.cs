@@ -69,14 +69,27 @@ namespace POS0
                 DataGridViewRow newRow = new DataGridViewRow();
                 newRow.CreateCells(dataGridView2);
                 newRow.Cells[0].Value = n + 1;
-                newRow.Cells[1].Value = productName.Text;
-                newRow.Cells[2].Value = productPrice.Text;
-                newRow.Cells[3].Value = productQuantity.Text;
-                newRow.Cells[4].Value = total;
+                newRow.Cells[1].Value = productID.Text;
+                newRow.Cells[2].Value = productName.Text;
+                newRow.Cells[3].Value = productPrice.Text;
+                newRow.Cells[4].Value = productQuantity.Text;
+                newRow.Cells[5].Value = total;
                 dataGridView2.Rows.Add(newRow);
                 GrdTotal = GrdTotal + total;
                 totalHarga.Text = "" + GrdTotal;
                 n++;
+                try
+                {
+                    Con.Open();
+                    string query = "insert into [dbo].[log] values ('" + productID.Text + "','" + billID.Text + "','" + productQuantity.Text + "')";
+                    SqlCommand cmd = new SqlCommand(query, Con);
+                    cmd.ExecuteNonQuery();
+                    Con.Close();
+                }
+                catch
+                {
+
+                }
             }
         }
 
@@ -150,7 +163,7 @@ namespace POS0
         private void populate()
         {
             Con.Open();
-            string query = "select productName, price from [dbo].[products]";
+            string query = "select Id,productName, price from [dbo].[products]";
             SqlDataAdapter sda = new SqlDataAdapter(query, Con);
             SqlCommandBuilder builder = new SqlCommandBuilder(sda);
             var ds = new DataSet();
@@ -161,8 +174,9 @@ namespace POS0
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            productName.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-            productPrice.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+            productName.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+            productPrice.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+            productID.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
 
         }
 
