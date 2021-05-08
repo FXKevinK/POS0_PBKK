@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace POS0
 {
-
     public partial class Transactions : Form
     {
-        private int transactionID = 0;
         SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\eric\Documents\pos.mdf;Integrated Security=True;Connect Timeout=30");
         public Transactions()
         {
@@ -19,7 +23,7 @@ namespace POS0
             }
             catch (Exception e)
             {
-                Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ASUS\source\repos\POS0_PBKK\TESTDb.mdf;Integrated Security=True;Connect Timeout=30");
+                Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ASUS\Documents\TESTDb.mdf;Integrated Security=True;Connect Timeout=30");
                 try
                 {
                     Con.Open();
@@ -28,12 +32,10 @@ namespace POS0
                 {
                     Console.WriteLine(f.Message);
                 }
-                SqlCommand cmd = new SqlCommand("select count(*) from [dbo].[transactions]", Con);
-                transactionID = (int)cmd.ExecuteScalar();
             }
             Con.Close();
         }
-
+        
 
 
         private void label2_Click(object sender, EventArgs e)
@@ -46,7 +48,7 @@ namespace POS0
             try
             {
                 Con.Open();
-                string query = "insert into [dbo].[transactions] values ('" + comboBox1.Text + "','" + textBox2.Text + "','" + numericUpDown1.Text + "','" + numericUpDown2.Text + "','" + richTextBox1.Text + "','" + transactionID + "')";
+                string query = "insert into [dbo].[transactions] values (" + comboBox1.Text + ",'" + textBox2.Text + "'," + numericUpDown1.Text + "," + numericUpDown2.Text + ",'" + richTextBox1.Text + "')";
                 SqlCommand cmd = new SqlCommand(query, Con);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Product Added Successfully");
@@ -66,7 +68,7 @@ namespace POS0
             try
             {
                 Con.Open();
-                string query = "delete from [dbo].[transactions] where idTransactions='" + transactionID + "' and productName='" + comboBox1.Text + "'";
+                string query = "delete from [dbo].[transactions] where Id='" + textBox2.Text + "'";
                 SqlCommand cmd = new SqlCommand(query, Con);
                 MessageBox.Show("Product Deleted");
                 Con.Close();
@@ -94,12 +96,6 @@ namespace POS0
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'tESTDbDataSet.transactions' table. You can move, or remove it, as needed.
-            this.transactionsTableAdapter.Fill(this.tESTDbDataSet.transactions);
-            // TODO: This line of code loads data into the 'tESTDbDataSet.products' table. You can move, or remove it, as needed.
-            this.productsTableAdapter1.Fill(this.tESTDbDataSet.products);
-            // TODO: This line of code loads data into the 'tESTDbDataSet.user' table. You can move, or remove it, as needed.
-            this.userTableAdapter.Fill(this.tESTDbDataSet.user);
             //// TODO: This line of code loads data into the 'posDataSet.products' table. You can move, or remove it, as needed.
             //this.productsTableAdapter.Fill(this.posDataSet.products);
 
@@ -110,7 +106,7 @@ namespace POS0
             try
             {
                 Con.Open();
-                string query = "update [dbo].[transactions] set productName='" + comboBox1.Text + "', quantity=" + numericUpDown1.Text + ", price =" + numericUpDown2.Text + ", description= '" + richTextBox1.Text + "' where productName='" + comboBox1.Text + "' and idTransactions = '" + transactionID + "'";
+                string query = "update [dbo].[transactions] set productName='" + comboBox1.Text + "', quantity=" + numericUpDown1.Text + ", price =" + numericUpDown2.Text + ", description= '" + richTextBox1.Text + "' where ID='" + textBox2.Text + "'";
                 SqlCommand cmd = new SqlCommand(query, Con);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Product Updated Successfully");
@@ -141,7 +137,7 @@ namespace POS0
                 DataTable dt = new DataTable();
                 SqlDataAdapter cmd = new SqlDataAdapter(query, Con);
                 cmd.Fill(dt);
-                if (dt.Rows.Count > 0)
+                if(dt.Rows.Count > 0)
                 {
                     textBox2.Text = dt.Rows[0][1].ToString();
                     numericUpDown1.Value = 1;
