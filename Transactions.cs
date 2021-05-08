@@ -160,14 +160,19 @@ namespace POS0
         {
             try
             {
-                Bills bill = new Bills();
-                bill.Show();
+                //Bills bill = new Bills();
+                //bill.Show();
                 this.Hide();
             }
             catch
             {
                 MessageBox.Show("Struk ERROR");
             }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
