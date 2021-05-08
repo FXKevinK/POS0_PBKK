@@ -7,7 +7,8 @@ namespace POS0
 {
     public partial class products : Form
     {
-        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ASUS\source\repos\POS0_PBKK\TESTDb.mdf;Integrated Security=True;Connect Timeout=30");
+        private SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ASUS\source\repos\POS0_PBKK\TESTDb.mdf;Integrated Security=True");
+
         public products()
         {
             InitializeComponent();
@@ -26,7 +27,6 @@ namespace POS0
         {
             // TODO: This line of code loads data into the 'tESTDbDataSet.products' table. You can move, or remove it, as needed.
             this.productsTableAdapter.Fill(this.tESTDbDataSet.products);
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -46,11 +46,14 @@ namespace POS0
                 SqlDataAdapter da = new SqlDataAdapter(query1, Con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
+
+                Con.Close();
+
                 if (dt.Rows.Count == 0)
                 {
+                    Con.Open();
                     string query = "insert into [dbo].[products] ('productName','price','description') value('" + productName.Text + "','" + productValue.Text + "','" + productDescription.Text + "') ";
                     SqlCommand cmd = new SqlCommand(query, Con);
-
 
                     Con.Close();
                     MessageBox.Show("Produk berhasil dimasukan");
@@ -110,7 +113,6 @@ namespace POS0
                 products product = new products();
                 product.Show();
                 this.Close();
-
             }
             catch (Exception f)
             {
@@ -156,7 +158,6 @@ namespace POS0
 
         private void productID_TextChanged(object sender, EventArgs e)
         {
-
         }
     }
 }

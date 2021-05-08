@@ -94,6 +94,10 @@ namespace POS0
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'tESTDbDataSet.products' table. You can move, or remove it, as needed.
+            this.productsTableAdapter.Fill(this.tESTDbDataSet.products);
+            // TODO: This line of code loads data into the 'tESTDbDataSet.transactions' table. You can move, or remove it, as needed.
+            this.transactionsTableAdapter.Fill(this.tESTDbDataSet.transactions);
             // TODO: This line of code loads data into the 'tESTDbDataSet.transactions' table. You can move, or remove it, as needed.
             this.transactionsTableAdapter.Fill(this.tESTDbDataSet.transactions);
             // TODO: This line of code loads data into the 'tESTDbDataSet.products' table. You can move, or remove it, as needed.
@@ -164,14 +168,17 @@ namespace POS0
         {
             try
             {
-                Bills bill = new Bills();
-                bill.Show();
                 this.Hide();
             }
             catch
             {
                 MessageBox.Show("Struk ERROR");
             }
+        }
+
+        private void printDocument2_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+
         }
     }
 }

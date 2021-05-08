@@ -7,7 +7,7 @@ namespace POS0
 {
     public partial class Users : Form
     {
-        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ASUS\source\repos\POS0_PBKK\TESTDb.mdf;Integrated Security=True;Connect Timeout=30");
+        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ASUS\source\repos\POS0_PBKK\TESTDb.mdf;Integrated Security=True;");
         public Users()
         {
             InitializeComponent();
@@ -83,8 +83,10 @@ namespace POS0
                 SqlDataAdapter da = new SqlDataAdapter(query1, Con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
+                Con.Close();
                 if (dt.Rows.Count == 0)
                 {
+                    Con.Open();
                     int type = getUserType(userType.Text);
                     string query = "insert into [dbo].[user] ('username','password','email','notelp','userType') value('" + userName.Text + "','" + userPassword.Text + "','" + userEmail.Text + "'" + userTelp.Text + "','" + type + "') ";
                     SqlCommand cmd = new SqlCommand(query, Con);
@@ -169,6 +171,7 @@ namespace POS0
                 {
                     userType.Text = "kasir";
                 }
+                Con.Close();
 
             }
             catch (Exception f)

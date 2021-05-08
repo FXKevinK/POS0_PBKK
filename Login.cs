@@ -43,8 +43,8 @@ namespace POS0
             else if (data.Rows[0][1].ToString() == "2")
             {
                 //admin
-                admin admins = new admin();
-                admins.Show();
+                products product = new products();
+                product.Show();
                 this.Hide();
             }
 
