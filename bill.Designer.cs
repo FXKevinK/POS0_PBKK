@@ -39,6 +39,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.DataGRID2 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.productID = new System.Windows.Forms.TextBox();
             this.BillsDGV = new System.Windows.Forms.DataGridView();
@@ -72,10 +73,8 @@
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.button5 = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.transactionListTableAdapter = new POS0.posDataSetDataSetTableAdapters.transactionListTableAdapter();
-            this.label10 = new System.Windows.Forms.Label();
             this.DataGRID2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BillsDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.transactionListBindingSource)).BeginInit();
@@ -131,7 +130,7 @@
             this.SellerNamelbl.AutoSize = true;
             this.SellerNamelbl.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SellerNamelbl.ForeColor = System.Drawing.Color.White;
-            this.SellerNamelbl.Location = new System.Drawing.Point(23, 19);
+            this.SellerNamelbl.Location = new System.Drawing.Point(1049, 19);
             this.SellerNamelbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SellerNamelbl.Name = "SellerNamelbl";
             this.SellerNamelbl.Size = new System.Drawing.Size(71, 28);
@@ -143,7 +142,7 @@
             this.dateLabel.AutoSize = true;
             this.dateLabel.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateLabel.ForeColor = System.Drawing.Color.White;
-            this.dateLabel.Location = new System.Drawing.Point(1040, 18);
+            this.dateLabel.Location = new System.Drawing.Point(24, 19);
             this.dateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dateLabel.Name = "dateLabel";
             this.dateLabel.Size = new System.Drawing.Size(50, 28);
@@ -220,11 +219,23 @@
             this.DataGRID2.Controls.Add(this.label3);
             this.DataGRID2.Controls.Add(this.label2);
             this.DataGRID2.Controls.Add(this.label1);
-            this.DataGRID2.Location = new System.Drawing.Point(91, 66);
+            this.DataGRID2.Location = new System.Drawing.Point(55, 40);
             this.DataGRID2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DataGRID2.Name = "DataGRID2";
             this.DataGRID2.Size = new System.Drawing.Size(1365, 862);
             this.DataGRID2.TabIndex = 30;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Gadugi", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label10.Location = new System.Drawing.Point(1153, 813);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(175, 19);
+            this.label10.TabIndex = 38;
+            this.label10.Text = "POS: Eric, Feinard, Kevin";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label9
             // 
@@ -580,20 +591,6 @@
             this.printPreviewDialog1.Visible = false;
             this.printPreviewDialog1.Load += new System.EventHandler(this.printPreviewDialog1_Load_1);
             // 
-            // button5
-            // 
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.button5.Location = new System.Drawing.Point(1178, -38);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(81, 66);
-            this.button5.TabIndex = 31;
-            this.button5.Text = "x";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
             // printDocument1
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage_1);
@@ -602,25 +599,12 @@
             // 
             this.transactionListTableAdapter.ClearBeforeFill = true;
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Gadugi", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label10.Location = new System.Drawing.Point(1153, 813);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(175, 19);
-            this.label10.TabIndex = 38;
-            this.label10.Text = "POS: Eric, Feinard, Kevin";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
-            // 
             // bill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1472, 948);
             this.Controls.Add(this.DataGRID2);
-            this.Controls.Add(this.button5);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "bill";
             this.Text = "Form3";
@@ -660,7 +644,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
-        private System.Windows.Forms.Button button5;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox productQuantity;

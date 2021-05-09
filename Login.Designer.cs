@@ -42,9 +42,9 @@ namespace POS0
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.DataGRID2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.DataGRID2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -76,9 +76,9 @@ namespace POS0
             this.label1.Font = new System.Drawing.Font("Gadugi", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(368, 90);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(168, 34);
+            this.label1.Size = new System.Drawing.Size(122, 34);
             this.label1.TabIndex = 2;
-            this.label1.Text = "USERNAME";
+            this.label1.Text = "ID USER";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
@@ -202,14 +202,16 @@ namespace POS0
             this.DataGRID2.TabIndex = 31;
             this.DataGRID2.Paint += new System.Windows.Forms.PaintEventHandler(this.DataGRID2_Paint);
             // 
-            // pictureBox1
+            // label4
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(89, 145);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(134, 136);
-            this.pictureBox1.TabIndex = 39;
-            this.pictureBox1.TabStop = false;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Lucida Sans", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.Location = new System.Drawing.Point(25, 363);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(264, 23);
+            this.label4.TabIndex = 40;
+            this.label4.Text = "POS: Eric, Feinard, Kevin";
             // 
             // label3
             // 
@@ -222,16 +224,14 @@ namespace POS0
             this.label3.TabIndex = 32;
             this.label3.Text = "POS-PBKK";
             // 
-            // label4
+            // pictureBox1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Lucida Sans", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(25, 363);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(264, 23);
-            this.label4.TabIndex = 40;
-            this.label4.Text = "POS: Eric, Feinard, Kevin";
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(89, 145);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(134, 136);
+            this.pictureBox1.TabIndex = 39;
+            this.pictureBox1.TabStop = false;
             // 
             // login
             // 
