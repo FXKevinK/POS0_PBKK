@@ -175,9 +175,10 @@ namespace POS0
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            productName.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-            productPrice.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-            productID.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            int row = e.RowIndex; 
+            productName.Text = dataGridView1.Rows[row].Cells[1].Value.ToString();
+            productPrice.Text = dataGridView1.Rows[row].Cells[2].Value.ToString();
+            productID.Text = dataGridView1.Rows[row].Cells[0].Value.ToString();
 
         }
 
@@ -204,11 +205,14 @@ namespace POS0
         private void printDocument1_PrintPage_1(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             //draw here
-            e.Graphics.DrawString("PBKK POS", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 2, e.PageBounds.Height / 10);
-            e.Graphics.DrawString("Alamat", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 2, e.PageBounds.Height / 10 + 30);
-            e.Graphics.DrawString("Deskripsi", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 2, e.PageBounds.Height / 10 + 60);
-            e.Graphics.DrawLine(new Pen(Color.Black, 5), x1: 0, y1: e.PageBounds.Height / 10 + 90, x2: e.PageBounds.Width, y2: e.PageBounds.Height / 10 + 90);
-            int rowsSpace = 1;
+            int rowsSpace = 0;
+            e.Graphics.DrawString("PBKK POS", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.MarginBounds.Width / 2, e.PageBounds.Height / 10 + (rowsSpace * 50));
+            rowsSpace++;
+            e.Graphics.DrawString("Alamat", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.MarginBounds.Width / 2, e.PageBounds.Height / 10 + (rowsSpace * 50));
+            rowsSpace++;
+            e.Graphics.DrawString("Deskripsi", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.MarginBounds.Width / 2, e.PageBounds.Height / 10 + (rowsSpace * 50));
+            rowsSpace++;
+            e.Graphics.DrawLine(new Pen(Color.Black, 5), x1: 0, y1: e.PageBounds.Height / 10 + (rowsSpace * 50), x2: e.PageBounds.Width, y2: e.PageBounds.Height / 10 + (rowsSpace * 50));
             int total = 0;
             Con.Open();
             string query = "select * from [dbo].[log] where idtransaksi = '" + selectedPrint +
@@ -223,16 +227,16 @@ namespace POS0
             int totalPriceProduct = 0;
 
 
-            e.Graphics.DrawString("No Produk", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, 20, e.PageBounds.Height / 10 * 3 + (rowsSpace * 30));
-            e.Graphics.DrawString("Nama Produk", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 4 * 1, e.PageBounds.Height / 10 * 3 + (rowsSpace * 30));
-            e.Graphics.DrawString("Qty", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 4 * 2, e.PageBounds.Height / 10 * 3 + (rowsSpace * 30));
-            e.Graphics.DrawString("Harga", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 4 * 3, e.PageBounds.Height / 10 * 3 + (rowsSpace * 30));
+            e.Graphics.DrawString("No Produk", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, 20, e.PageBounds.Height / 10 + (rowsSpace * 50));
+            e.Graphics.DrawString("Nama Produk", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 4 * 1, e.PageBounds.Height / 10 + (rowsSpace * 50));
+            e.Graphics.DrawString("Qty", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 4 * 2, e.PageBounds.Height / 10 + (rowsSpace * 50));
+            e.Graphics.DrawString("Harga", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 4 * 3, e.PageBounds.Height / 10 + (rowsSpace * 50));
 
             rowsSpace++;
 
             foreach (DataRow row in dt.Rows)
             {
-                e.Graphics.DrawString(row[0].ToString(), new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, 20, e.PageBounds.Height / 10 * 3 + (rowsSpace * 30));
+                e.Graphics.DrawString(row[0].ToString(), new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, 20, e.PageBounds.Height / 10 + (rowsSpace * 50));
 
                 Con.Open();
                 query = "select productName, price from [dbo].[products] where Id = '" + row[0].ToString() +
@@ -242,18 +246,19 @@ namespace POS0
                 da.Fill(productNP);
                 Con.Close();
 
-                e.Graphics.DrawString(productNP.Rows[0][0].ToString(), new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 4 * 1, e.PageBounds.Height / 10 * 3 + (rowsSpace * 30));
+                e.Graphics.DrawString(productNP.Rows[0][0].ToString(), new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 4 * 1, e.PageBounds.Height / 10 + (rowsSpace * 50));
                 totalPriceProduct = Convert.ToInt32(productNP.Rows[0][1].ToString()) * Convert.ToInt32(row[2].ToString());
                 total += totalPriceProduct;
 
-                e.Graphics.DrawString(row[2].ToString(), new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 4 * 2, e.PageBounds.Height / 10 * 3 + (rowsSpace * 30));
-                e.Graphics.DrawString(Convert.ToString(totalPriceProduct), new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 4 * 3, e.PageBounds.Height / 10 * 3 + (rowsSpace * 30));
+                e.Graphics.DrawString(row[2].ToString(), new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 4 * 2, e.PageBounds.Height / 10 + (rowsSpace * 50));
+                e.Graphics.DrawString(Convert.ToString(totalPriceProduct), new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 4 * 3, e.PageBounds.Height / 10 + (rowsSpace * 50));
 
                 rowsSpace++;
             }
-            e.Graphics.DrawLine(new Pen(Color.Black, 5), x1: 0, y1: rowsSpace * 30, x2: e.PageBounds.Width, y2: rowsSpace * 30);
+            e.Graphics.DrawLine(new Pen(Color.Black, 5), x1: 0, y1: e.PageBounds.Height / 10 + (rowsSpace * 50), x2: e.PageBounds.Width, y2: e.PageBounds.Height / 10 + (rowsSpace * 50));
             rowsSpace++;
-            e.Graphics.DrawString(Convert.ToString(total), new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, 20, e.PageBounds.Height / 10 * 3 + (rowsSpace * 30));
+            e.Graphics.DrawString("Hasil", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, 20, e.PageBounds.Height / 10 + (rowsSpace * 50));
+            e.Graphics.DrawString(Convert.ToString(total), new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 4 * 3, e.PageBounds.Height / 10 + (rowsSpace * 50));
 
 
         }
