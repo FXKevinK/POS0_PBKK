@@ -155,13 +155,24 @@ namespace POS0
 
         private void button5_Click(object sender, EventArgs e)
         {
-           // Users.Show();
-            this.Close();
+            Users userform = new Users();
+            userform.Show();
+            // Users.Show();
+            this.Hide();
         }
 
         private void label8_Click(object sender, EventArgs e)
         {
+            login loginform = new login();
+            loginform.Show();
+            this.Hide();
+        }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            bill billform = new bill();
+            billform.Show();
+            this.Hide();
         }
     }
 }

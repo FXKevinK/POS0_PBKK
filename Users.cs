@@ -202,5 +202,12 @@ namespace POS0
         {
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            login loginform = new login();
+            loginform.Show();
+            this.Hide();
+        }
     }
 }

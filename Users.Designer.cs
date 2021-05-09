@@ -55,6 +55,7 @@ namespace POS0
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSetDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -65,7 +66,7 @@ namespace POS0
             this.moveToUser.AutoSize = true;
             this.moveToUser.Font = new System.Drawing.Font("Gadugi", 18F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.moveToUser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.moveToUser.Location = new System.Drawing.Point(633, 33);
+            this.moveToUser.Location = new System.Drawing.Point(564, 33);
             this.moveToUser.Name = "moveToUser";
             this.moveToUser.Size = new System.Drawing.Size(75, 35);
             this.moveToUser.TabIndex = 3;
@@ -79,9 +80,8 @@ namespace POS0
             this.moveToProduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.moveToProduct.Location = new System.Drawing.Point(492, 33);
             this.moveToProduct.Name = "moveToProduct";
-            this.moveToProduct.Size = new System.Drawing.Size(119, 35);
+            this.moveToProduct.Size = new System.Drawing.Size(0, 35);
             this.moveToProduct.TabIndex = 2;
-            this.moveToProduct.Text = "Product";
             this.moveToProduct.Click += new System.EventHandler(this.moveToProduct_Click);
             // 
             // label
@@ -331,12 +331,28 @@ namespace POS0
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button3.Font = new System.Drawing.Font("MS PGothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.button3.Location = new System.Drawing.Point(55, 546);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(112, 35);
+            this.button3.TabIndex = 24;
+            this.button3.Text = "Selesai";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(1144, 605);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label6);
@@ -397,5 +413,6 @@ namespace POS0
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

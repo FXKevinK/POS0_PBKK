@@ -88,10 +88,10 @@
             this.totalHarga.AutoSize = true;
             this.totalHarga.Font = new System.Drawing.Font("MS Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totalHarga.ForeColor = System.Drawing.Color.White;
-            this.totalHarga.Location = new System.Drawing.Point(880, 479);
+            this.totalHarga.Location = new System.Drawing.Point(782, 383);
             this.totalHarga.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.totalHarga.Name = "totalHarga";
-            this.totalHarga.Size = new System.Drawing.Size(49, 24);
+            this.totalHarga.Size = new System.Drawing.Size(42, 20);
             this.totalHarga.TabIndex = 25;
             this.totalHarga.Text = "Rp.";
             // 
@@ -101,10 +101,10 @@
             this.label7.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label7.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(673, 445);
+            this.label7.Location = new System.Drawing.Point(598, 356);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(146, 28);
+            this.label7.Size = new System.Drawing.Size(122, 24);
             this.label7.TabIndex = 24;
             this.label7.Text = "Total Harga";
             this.label7.Click += new System.EventHandler(this.label7_Click);
@@ -116,10 +116,10 @@
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button9.Font = new System.Drawing.Font("MS PGothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button9.Location = new System.Drawing.Point(29, 445);
-            this.button9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button9.Location = new System.Drawing.Point(26, 356);
+            this.button9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(478, 40);
+            this.button9.Size = new System.Drawing.Size(425, 32);
             this.button9.TabIndex = 23;
             this.button9.Text = "Tambah Produk";
             this.button9.UseVisualStyleBackColor = false;
@@ -130,10 +130,10 @@
             this.SellerNamelbl.AutoSize = true;
             this.SellerNamelbl.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SellerNamelbl.ForeColor = System.Drawing.Color.White;
-            this.SellerNamelbl.Location = new System.Drawing.Point(1049, 19);
+            this.SellerNamelbl.Location = new System.Drawing.Point(932, 15);
             this.SellerNamelbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SellerNamelbl.Name = "SellerNamelbl";
-            this.SellerNamelbl.Size = new System.Drawing.Size(71, 28);
+            this.SellerNamelbl.Size = new System.Drawing.Size(58, 24);
             this.SellerNamelbl.TabIndex = 22;
             this.SellerNamelbl.Text = "Seller";
             // 
@@ -142,10 +142,10 @@
             this.dateLabel.AutoSize = true;
             this.dateLabel.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateLabel.ForeColor = System.Drawing.Color.White;
-            this.dateLabel.Location = new System.Drawing.Point(24, 19);
+            this.dateLabel.Location = new System.Drawing.Point(21, 15);
             this.dateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(50, 28);
+            this.dateLabel.Size = new System.Drawing.Size(41, 24);
             this.dateLabel.TabIndex = 21;
             this.dateLabel.Text = "Tgl.";
             this.dateLabel.Click += new System.EventHandler(this.Datelbl_Click);
@@ -155,10 +155,10 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(24, 273);
+            this.label5.Location = new System.Drawing.Point(21, 218);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 28);
+            this.label5.Size = new System.Drawing.Size(71, 24);
             this.label5.TabIndex = 19;
             this.label5.Text = "Jumlah";
             // 
@@ -169,10 +169,10 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("MS PGothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button2.Location = new System.Drawing.Point(1149, 653);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button2.Location = new System.Drawing.Point(1021, 522);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(179, 55);
+            this.button2.Size = new System.Drawing.Size(159, 44);
             this.button2.TabIndex = 17;
             this.button2.Text = "Cetak";
             this.button2.UseVisualStyleBackColor = false;
@@ -183,10 +183,10 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.Control;
-            this.label8.Location = new System.Drawing.Point(45, 803);
+            this.label8.Location = new System.Drawing.Point(40, 642);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(145, 29);
+            this.label8.Size = new System.Drawing.Size(123, 25);
             this.label8.TabIndex = 35;
             this.label8.Text = "<<< Logout";
             this.label8.Click += new System.EventHandler(this.label8_Click);
@@ -219,10 +219,10 @@
             this.DataGRID2.Controls.Add(this.label3);
             this.DataGRID2.Controls.Add(this.label2);
             this.DataGRID2.Controls.Add(this.label1);
-            this.DataGRID2.Location = new System.Drawing.Point(55, 40);
-            this.DataGRID2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.DataGRID2.Location = new System.Drawing.Point(1, 1);
+            this.DataGRID2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DataGRID2.Name = "DataGRID2";
-            this.DataGRID2.Size = new System.Drawing.Size(1365, 862);
+            this.DataGRID2.Size = new System.Drawing.Size(1213, 690);
             this.DataGRID2.TabIndex = 30;
             // 
             // label10
@@ -230,9 +230,9 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Gadugi", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label10.Location = new System.Drawing.Point(1153, 813);
+            this.label10.Location = new System.Drawing.Point(1025, 650);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(175, 19);
+            this.label10.Size = new System.Drawing.Size(154, 17);
             this.label10.TabIndex = 38;
             this.label10.Text = "POS: Eric, Feinard, Kevin";
             this.label10.Click += new System.EventHandler(this.label10_Click);
@@ -242,22 +242,21 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(24, 344);
+            this.label9.Location = new System.Drawing.Point(21, 275);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(88, 28);
+            this.label9.Size = new System.Drawing.Size(71, 24);
             this.label9.TabIndex = 37;
             this.label9.Text = "Jumlah";
             this.label9.Visible = false;
             // 
             // productID
             // 
-            this.productID.Location = new System.Drawing.Point(29, 382);
-            this.productID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.productID.Location = new System.Drawing.Point(26, 306);
             this.productID.Multiline = true;
             this.productID.Name = "productID";
             this.productID.ReadOnly = true;
-            this.productID.Size = new System.Drawing.Size(478, 30);
+            this.productID.Size = new System.Drawing.Size(425, 25);
             this.productID.TabIndex = 36;
             this.productID.Visible = false;
             // 
@@ -273,12 +272,12 @@
             this.dateDataGridViewTextBoxColumn,
             this.totalAmmountDataGridViewTextBoxColumn});
             this.BillsDGV.DataSource = this.transactionListBindingSource;
-            this.BillsDGV.Location = new System.Drawing.Point(646, 542);
-            this.BillsDGV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BillsDGV.Location = new System.Drawing.Point(574, 434);
+            this.BillsDGV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BillsDGV.Name = "BillsDGV";
             this.BillsDGV.ReadOnly = true;
             this.BillsDGV.RowHeadersWidth = 51;
-            this.BillsDGV.Size = new System.Drawing.Size(453, 180);
+            this.BillsDGV.Size = new System.Drawing.Size(403, 144);
             this.BillsDGV.TabIndex = 35;
             this.BillsDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BillsDGV_CellContentClick);
             // 
@@ -332,13 +331,13 @@
             this.PriceProduk,
             this.quantityproduct,
             this.totalprice});
-            this.dataGridView2.Location = new System.Drawing.Point(646, 69);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView2.Location = new System.Drawing.Point(574, 55);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(679, 318);
+            this.dataGridView2.Size = new System.Drawing.Size(604, 254);
             this.dataGridView2.TabIndex = 34;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -394,43 +393,43 @@
             // billID
             // 
             this.billID.Enabled = false;
-            this.billID.Location = new System.Drawing.Point(30, 99);
-            this.billID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.billID.Location = new System.Drawing.Point(27, 79);
+            this.billID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.billID.Multiline = true;
             this.billID.Name = "billID";
             this.billID.ReadOnly = true;
-            this.billID.Size = new System.Drawing.Size(478, 30);
+            this.billID.Size = new System.Drawing.Size(425, 25);
             this.billID.TabIndex = 33;
             this.billID.TextChanged += new System.EventHandler(this.billID_TextChanged);
             // 
             // productPrice
             // 
-            this.productPrice.Location = new System.Drawing.Point(29, 239);
-            this.productPrice.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.productPrice.Location = new System.Drawing.Point(26, 191);
+            this.productPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.productPrice.Multiline = true;
             this.productPrice.Name = "productPrice";
             this.productPrice.ReadOnly = true;
-            this.productPrice.Size = new System.Drawing.Size(478, 30);
+            this.productPrice.Size = new System.Drawing.Size(425, 25);
             this.productPrice.TabIndex = 32;
             // 
             // productQuantity
             // 
-            this.productQuantity.Location = new System.Drawing.Point(29, 309);
-            this.productQuantity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.productQuantity.Location = new System.Drawing.Point(26, 247);
+            this.productQuantity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.productQuantity.Multiline = true;
             this.productQuantity.Name = "productQuantity";
-            this.productQuantity.Size = new System.Drawing.Size(478, 30);
+            this.productQuantity.Size = new System.Drawing.Size(425, 25);
             this.productQuantity.TabIndex = 31;
             this.productQuantity.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // productName
             // 
-            this.productName.Location = new System.Drawing.Point(29, 171);
-            this.productName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.productName.Location = new System.Drawing.Point(26, 137);
+            this.productName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.productName.Multiline = true;
             this.productName.Name = "productName";
             this.productName.ReadOnly = true;
-            this.productName.Size = new System.Drawing.Size(478, 30);
+            this.productName.Size = new System.Drawing.Size(425, 25);
             this.productName.TabIndex = 30;
             this.productName.TextChanged += new System.EventHandler(this.productName_TextChanged);
             // 
@@ -441,13 +440,13 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Linen;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.GridColor = System.Drawing.Color.Gold;
-            this.dataGridView1.Location = new System.Drawing.Point(30, 520);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView1.Location = new System.Drawing.Point(27, 416);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(477, 225);
+            this.dataGridView1.Size = new System.Drawing.Size(424, 180);
             this.dataGridView1.TabIndex = 29;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -456,10 +455,10 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("MS Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(880, 413);
+            this.label6.Location = new System.Drawing.Point(782, 330);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 24);
+            this.label6.Size = new System.Drawing.Size(42, 20);
             this.label6.TabIndex = 28;
             this.label6.Text = "Rp.";
             // 
@@ -470,10 +469,10 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("MS PGothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button1.Location = new System.Drawing.Point(1149, 555);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Location = new System.Drawing.Point(1021, 444);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(176, 55);
+            this.button1.Size = new System.Drawing.Size(156, 44);
             this.button1.TabIndex = 16;
             this.button1.Text = "Simpan";
             this.button1.UseVisualStyleBackColor = false;
@@ -486,10 +485,10 @@
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("MS PGothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.button7.Location = new System.Drawing.Point(557, 194);
-            this.button7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button7.Location = new System.Drawing.Point(495, 155);
+            this.button7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(55, 55);
+            this.button7.Size = new System.Drawing.Size(49, 44);
             this.button7.TabIndex = 12;
             this.button7.Text = "⟳";
             this.button7.UseVisualStyleBackColor = false;
@@ -500,10 +499,10 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(24, 206);
+            this.label4.Location = new System.Drawing.Point(21, 165);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 28);
+            this.label4.Size = new System.Drawing.Size(63, 24);
             this.label4.TabIndex = 5;
             this.label4.Text = "Harga";
             this.label4.Click += new System.EventHandler(this.label4_Click);
@@ -513,10 +512,10 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(24, 135);
+            this.label3.Location = new System.Drawing.Point(21, 108);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(157, 28);
+            this.label3.Size = new System.Drawing.Size(130, 24);
             this.label3.TabIndex = 3;
             this.label3.Text = "Nama Produk";
             // 
@@ -525,10 +524,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(25, 62);
+            this.label2.Location = new System.Drawing.Point(22, 50);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 28);
+            this.label2.Size = new System.Drawing.Size(60, 24);
             this.label2.TabIndex = 1;
             this.label2.Text = "ID Bill";
             // 
@@ -538,10 +537,10 @@
             this.label1.BackColor = System.Drawing.SystemColors.HotTrack;
             this.label1.Font = new System.Drawing.Font("Gadugi", 15F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(552, 13);
+            this.label1.Location = new System.Drawing.Point(491, 10);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 35);
+            this.label1.Size = new System.Drawing.Size(120, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Penjualan";
             // 
@@ -601,11 +600,11 @@
             // 
             // bill
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1472, 948);
+            this.ClientSize = new System.Drawing.Size(1212, 691);
             this.Controls.Add(this.DataGRID2);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "bill";
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.bill_Load);
