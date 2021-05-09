@@ -97,5 +97,9 @@ namespace POS0
 
         }
 
+        private void DataGRID2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

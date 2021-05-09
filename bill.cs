@@ -14,6 +14,7 @@ namespace POS0
 {
     public partial class bill : Form
     {
+        int selectedPrint = 0;
         public bill()
         {
             InitializeComponent();
@@ -203,10 +204,57 @@ namespace POS0
         private void printDocument1_PrintPage_1(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             //draw here
-            float height = 0;
             e.Graphics.DrawString("PBKK POS", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 2, e.PageBounds.Height / 10);
-            e.Graphics.DrawString("PBKK POS", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 2, e.PageBounds.Height / 10 * 2);
-            e.Graphics.DrawString("PBKK POS", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 2, e.PageBounds.Height / 10 * 3);
+            e.Graphics.DrawString("Alamat", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 2, e.PageBounds.Height / 10 + 30);
+            e.Graphics.DrawString("Deskripsi", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 2, e.PageBounds.Height / 10 + 60);
+            e.Graphics.DrawLine(new Pen(Color.Black, 5), x1: 0, y1: e.PageBounds.Height / 10 + 90, x2: e.PageBounds.Width, y2: e.PageBounds.Height / 10 + 90);
+            int rowsSpace = 1;
+            int total = 0;
+            Con.Open();
+            string query = "select * from [dbo].[log] where idtransaksi = '" + selectedPrint +
+                "'";
+            DataTable dt = new DataTable();
+
+            SqlDataAdapter da = new SqlDataAdapter(query, Con);
+            da.Fill(dt);
+            Con.Close();
+            // dt is data recovered from query "select * from log where idtransaksi = selectedPrint"
+            // then do the 2nd query to get price from products with "select price from products where Id = rows[0]"
+            int totalPriceProduct = 0;
+
+
+            e.Graphics.DrawString("No Produk", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, 20, e.PageBounds.Height / 10 * 3 + (rowsSpace * 30));
+            e.Graphics.DrawString("Nama Produk", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 4 * 1, e.PageBounds.Height / 10 * 3 + (rowsSpace * 30));
+            e.Graphics.DrawString("Qty", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 4 * 2, e.PageBounds.Height / 10 * 3 + (rowsSpace * 30));
+            e.Graphics.DrawString("Harga", new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 4 * 3, e.PageBounds.Height / 10 * 3 + (rowsSpace * 30));
+
+            rowsSpace++;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                e.Graphics.DrawString(row[0].ToString(), new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, 20, e.PageBounds.Height / 10 * 3 + (rowsSpace * 30));
+
+                Con.Open();
+                query = "select productName, price from [dbo].[products] where Id = '" + row[0].ToString() +
+                    "'";
+                da = new SqlDataAdapter(query, Con);
+                DataTable productNP = new DataTable();
+                da.Fill(productNP);
+                Con.Close();
+
+                e.Graphics.DrawString(productNP.Rows[0][0].ToString(), new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 4 * 1, e.PageBounds.Height / 10 * 3 + (rowsSpace * 30));
+                totalPriceProduct = Convert.ToInt32(productNP.Rows[0][1].ToString()) * Convert.ToInt32(row[2].ToString());
+                total += totalPriceProduct;
+
+                e.Graphics.DrawString(row[2].ToString(), new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 4 * 2, e.PageBounds.Height / 10 * 3 + (rowsSpace * 30));
+                e.Graphics.DrawString(Convert.ToString(totalPriceProduct), new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, e.PageBounds.Width / 4 * 3, e.PageBounds.Height / 10 * 3 + (rowsSpace * 30));
+
+                rowsSpace++;
+            }
+            e.Graphics.DrawLine(new Pen(Color.Black, 5), x1: 0, y1: rowsSpace * 30, x2: e.PageBounds.Width, y2: rowsSpace * 30);
+            rowsSpace++;
+            e.Graphics.DrawString(Convert.ToString(total), new Font("Times New Roman", 25, FontStyle.Bold), Brushes.Black, 20, e.PageBounds.Height / 10 * 3 + (rowsSpace * 30));
+
 
         }
 
@@ -229,7 +277,16 @@ namespace POS0
 
         private void BillsDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            try
+            {
+                int rows = e.RowIndex;
+                selectedPrint = Convert.ToInt32(BillsDGV.Rows[rows].Cells[0].Value.ToString());
+                Console.WriteLine(selectedPrint);
+            }
+            catch (Exception ef)
+            {
+                MessageBox.Show(ef.Message);
+            }
         }
 
         private void bill_Load(object sender, EventArgs e)
@@ -240,6 +297,21 @@ namespace POS0
         }
 
         private void printPreviewDialog1_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void billID_TextChanged(object sender, EventArgs e)
         {
 
         }

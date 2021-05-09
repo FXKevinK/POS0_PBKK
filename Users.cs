@@ -7,7 +7,7 @@ namespace POS0
 {
     public partial class Users : Form
     {
-        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ASUS\source\repos\POS0_PBKK\TESTDb.mdf;Integrated Security=True;");
+        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ASUS\source\repos\POS0_PBKK\posDataSet.mdf;Integrated Security=True;Connect Timeout=30");
         public Users()
         {
             InitializeComponent();
@@ -17,7 +17,7 @@ namespace POS0
                 Con.Open();
                 Con.Close();
             }
-            catch (Exception e)
+            catch // (Exception e)
             {
                 Con = new SqlConnection();
                 // MessageBox.Show(e.Message);
@@ -33,6 +33,9 @@ namespace POS0
             SqlDataAdapter da = new SqlDataAdapter(query, Con);
             da.Fill(dt);
             dataGridView1.DataSource = dt;
+            userName.DataSource = dt;
+            userName.DisplayMember = "username";
+            userName.ValueMember = "username";
             Con.Close();
 
         }
@@ -80,28 +83,16 @@ namespace POS0
             try
             {
                 Con.Open();
-                string query1 = "select Id from [dbo].[user] where username = '" + userName.Text + "'";
-                SqlDataAdapter da = new SqlDataAdapter(query1, Con);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
+                string query = "insert into [dbo].[user] (username,password,email,notelp,usertype) values ('" + userName.Text + "','" + userPassword.Text + "','" + userEmail.Text + "','" + userTelp.Text + "','" + userType.Text + "'); ";
+                SqlCommand cmd = new SqlCommand(query, Con);
+                cmd.ExecuteNonQuery();
                 Con.Close();
-                if (dt.Rows.Count == 0)
-                {
-                    Con.Open();
-                    string query = "insert into [dbo].[user] ('username','password','email','notelp','usertype') value('" + userName.Text + "','" + userPassword.Text + "','" + userEmail.Text + "'" + userTelp.Text + "','" + userType.Text + "') ";
-                    SqlCommand cmd = new SqlCommand(query, Con);
+                MessageBox.Show("Akun berhasil masuk");
 
-                    Con.Close();
-                    MessageBox.Show("Produk berhasil dimasukan");
-                }
-                else
-                {
-                    MessageBox.Show("Data already in database, Please try again\n");
-                }
             }
             catch (Exception f)
             {
-                MessageBox.Show(f.Message);
+                MessageBox.Show(f.Message + " FROM INSERT QUERY ");
             }
             load();
 
@@ -112,20 +103,15 @@ namespace POS0
             try
             {
                 Con.Open();
-                string query = "update [dbo].[user] set username='" + userName.Text +
-                    "', password='" + userPassword.Text +
-                    "', email='" + userEmail.Text +
-                    "', notelp='" + userTelp.Text +
-                    "', usertype='" + userType.Text +
-                    " where Id='" + userID.Text +
-                    "'";
+                string query = "update [dbo].[user] set username='" + userName.Text + "', password='" + userPassword.Text + "', email='" + userEmail.Text + "', notelp='" + userTelp.Text + "', usertype='" + userType.Text + "' where Id='" + userID.Text + "';";
                 SqlCommand cmd = new SqlCommand(query, Con);
+                cmd.ExecuteNonQuery();
                 Con.Close();
-                MessageBox.Show("Updating product complete");
+                MessageBox.Show("Update Akun berhasil");
             }
             catch (Exception f)
             {
-                MessageBox.Show(f.Message);
+                MessageBox.Show(f.Message + " FROM UPDATE");
             }
             load();
         }
@@ -138,16 +124,18 @@ namespace POS0
                 string query = "delete from [dbo].[user] where Id = '" + userID.Text +
                     "'";
                 SqlCommand cmd = new SqlCommand(query, Con);
+                cmd.ExecuteNonQuery();
                 Con.Close();
-                MessageBox.Show("Delete data complete");
+                MessageBox.Show("Delete akun berhasi;");
 
             }
             catch (Exception f)
             {
-                MessageBox.Show(f.Message);
+                MessageBox.Show(f.Message + " FROM DELETE");
             }
             load();
         }
+
 
         private void comboBox1_SelectedIndexChanged(object sender, System.EventArgs e)
         {
