@@ -129,10 +129,11 @@ namespace POS0
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            textBox1.Text = dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[0].Value.ToString();
-            textBox2.Text = dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[1].Value.ToString();
-            numericUpDown1.Value = Convert.ToDecimal( dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[2].Value.ToString());
-            numericUpDown1.Value = Convert.ToDecimal(dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[3].Value.ToString());
+            int rows = e.RowIndex;
+            textBox1.Text = dataGridView1.Rows[rows].Cells[0].Value.ToString();
+            textBox2.Text = dataGridView1.Rows[rows].Cells[1].Value.ToString();
+            numericUpDown1.Value = Convert.ToDecimal( dataGridView1.Rows[rows].Cells[2].Value.ToString());
+            numericUpDown1.Value = Convert.ToDecimal(dataGridView1.Rows[rows].Cells[3].Value.ToString());
         }
 
         private void button4_Click(object sender, EventArgs e)

@@ -38,7 +38,7 @@ namespace POS0
 
         private void checkUserType(DataTable dt)
         {
-            if(dt.Rows[0][5].ToString() == "admin")
+            if(dt.Rows[0][5].ToString() == "admin" || dt.Rows[0][5].ToString() == "Admin")
             {
                 Users userlist = new Users();
                 userlist.Show();

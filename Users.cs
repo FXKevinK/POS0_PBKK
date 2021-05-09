@@ -23,10 +23,12 @@ namespace POS0
                 // MessageBox.Show(e.Message);
 
             }
+            Con.Close();
         }
 
         private void load()
         {
+            Con.Close();
             Con.Open();
             string query = "select * from [dbo].[user]";
             DataTable dt = new DataTable();
@@ -57,12 +59,13 @@ namespace POS0
         {
             try
             {
-                userID.Text = dataGridView1.SelectedRows[0].ToString();
-                userName.Text = dataGridView1.SelectedRows[1].ToString();
-                userPassword.Text = dataGridView1.SelectedRows[2].ToString();
-                userEmail.Text = dataGridView1.SelectedRows[3].ToString();
-                userTelp.Text = dataGridView1.SelectedRows[4].ToString();
-                if (dataGridView1.SelectedRows[5].ToString() == "1")
+                int row = e.RowIndex;
+                userID.Text = dataGridView1.Rows[row].Cells[0].ToString();
+                userName.Text = dataGridView1.Rows[row].Cells[1].ToString();
+                userPassword.Text = dataGridView1.Rows[row].Cells[2].ToString();
+                userEmail.Text = dataGridView1.Rows[row].Cells[3].ToString();
+                userTelp.Text = dataGridView1.Rows[row].Cells[4].ToString();
+                if (dataGridView1.Rows[row].Cells[5].ToString() == "1")
                 {
                     userType.Text = "admin";
                 }
@@ -163,10 +166,41 @@ namespace POS0
                 Con.Close();
 
             }
-            catch (Exception f)
+            catch 
             {
-                MessageBox.Show(f.Message);
+                Con.Close();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            product produkform = new product();
+            produkform.Show();
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            bill billform = new bill();
+            billform.Show();
+            this.Hide();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            login loginform = new login();
+            loginform.Show();
+            this.Hide();
+        }
+
+        private void moveToProduct_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void moveToUser_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
